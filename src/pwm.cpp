@@ -19,3 +19,13 @@ Pwm::Pwm() {
   OCR1A = 0;  // one of them should be always 0
   OCR1B = 0;
 }
+
+void Pwm::set_duty_cycle_on_positive_output_pin(uint16_t duty_cycle) {
+  OCR1A = duty_cycle;
+  OCR1B = 0;
+}
+
+void Pwm::set_duty_cycle_on_negative_output_pin(uint16_t duty_cycle) {
+  OCR1A = 0;
+  OCR1B = duty_cycle;
+}

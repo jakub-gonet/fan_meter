@@ -1,6 +1,8 @@
 #ifndef PWM_HPP
 #define PWM_HPP
 
+#include <avr/io.h>
+
 class Pwm {
  public:
   /**

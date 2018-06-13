@@ -1,4 +1,5 @@
 #include <avr/io.h>
+#include <stdint.h>
 
 #include "adc.hpp"
 
@@ -8,3 +9,7 @@ Adc::Adc() {
             | (1 << ADPS0) |  // prescaler /8 (50-200kHz for max resolution)
             (1 << ADPS1);
 }
+
+void Adc::make_one_async_conversion() {}
+
+uint16_t Adc::get_last_conversion() {}

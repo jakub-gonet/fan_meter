@@ -1,14 +1,16 @@
 #include <avr/io.h>
-
-void init();
+#include "adc.hpp"
+#include "pins.hpp"
+#include "pwm.hpp"
 
 int main() {
-  init();
+  // initialize modules
+  Pins pins();
+  Adc adc();
+  Pwm pwm();
 
   while (true) {
   }
 
   return 0;
 }
-
-void init() {}

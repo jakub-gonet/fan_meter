@@ -1,0 +1,10 @@
+#ifndef PINS_DEFINES_HPP
+#define PINS_DEFINES_HPP
+
+// ADC0 as ADC input
+#define PWM_OUT_PORT PORTB
+#define PWM_OUT_DDR DDRB
+#define PWM_OUT_POS PB1
+#define PWM_OUT_NEG PB2
+
+#endif  // PINS_DEFINES_HPP

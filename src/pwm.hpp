@@ -23,14 +23,20 @@ class Pwm {
    *
    * @param duty_cycle a new duty cycle value (10 bit width at most)
    */
-  void set_duty_cycle_on_positive_output_pin(uint16_t duty_cycle) const;
+  inline void set_duty_cycle_on_positive_output_pin(uint16_t duty_cycle) {
+    OCR1A = duty_cycle;
+    OCR1B = 0;
+  }
 
   /**
    * @brief Sets duty cycle on negative PWM pin
    *
    * @param duty_cycle a new duty cycle value (10 bit width at most)
    */
-  void set_duty_cycle_on_negative_output_pin(uint16_t duty_cycle) const;
+  inline void set_duty_cycle_on_negative_output_pin(uint16_t duty_cycle) {
+    OCR1A = 0;
+    OCR1B = duty_cycle;
+  }
 };
 
 #endif  // PWM_HPP

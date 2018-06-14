@@ -20,6 +20,4 @@ int main() {
     uint16_t measured_voltage = adc.get_last_conversion();
     measure.update_output(measured_voltage, pwm);
   }
-
-  return 0;
 }

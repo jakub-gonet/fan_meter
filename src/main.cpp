@@ -4,6 +4,8 @@
 #include "pins.hpp"
 #include "pwm.hpp"
 
+#define F_CPU 1000000
+
 int main() {
   // initialize modules
   Pins pins;

@@ -6,4 +6,5 @@
 
 Pins::Pins() {
   PWM_OUT_DDR = (1 << PWM_OUT_POS) | (1 << PWM_OUT_NEG);
+  DYNAMIC_MODE_PORT = (1 << DYNAMIC_MODE_PIN);
 }

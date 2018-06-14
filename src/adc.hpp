@@ -10,6 +10,14 @@ class Adc {
   Adc();
 
   /**
+   * @brief Checks if ADC conversion is in progress
+   *
+   * @return true
+   * @return false
+   */
+  bool is_conversion_in_progress();
+
+  /**
    * @brief Starts single conversion from which result can be aquired later
    * @see get_last_conversion
    */

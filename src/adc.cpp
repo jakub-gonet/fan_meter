@@ -9,6 +9,9 @@ Adc::Adc() {
             | (1 << ADPS0) |  // prescaler /8 (50-200kHz for max resolution)
             (1 << ADPS1);
 }
+bool Adc::is_conversion_in_progress() {
+  return ADCSRA & (1 << ADSC);
+}
 
 void Adc::make_one_async_conversion() {}
 

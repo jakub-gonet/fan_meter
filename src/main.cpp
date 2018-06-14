@@ -14,7 +14,7 @@ int main() {
 
   while (true) {
     if (!adc.is_conversion_in_progress()) {
-      adc.make_one_async_conversion();
+      adc.start_one_async_conversion();
     }
 
     uint16_t measured_voltage = adc.get_last_conversion();

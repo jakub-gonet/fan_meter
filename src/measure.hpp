@@ -2,6 +2,7 @@
 #define MEASURE_HPP
 
 #include <avr/io.h>
+#include "pwm.hpp"
 
 class Measure {
  public:
@@ -34,7 +35,7 @@ class Measure {
    */
   Measure(const uint16_t threshold, uint8_t hysteresis);
 
-  void update_output();
+  void update_output(uint16_t measured_voltage, Pwm pwm);
 };
 
 #endif  // MEASURE_HPP

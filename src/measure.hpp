@@ -25,9 +25,9 @@ class Measure {
    * @param threshold
    * @param hysteresis
    */
-  Measure(const uint16_t threshold, uint8_t hysteresis);
+  Measure(uint16_t threshold, uint8_t hysteresis);
 
-  void update_output(uint16_t measured_voltage, const Pwm& pwm);
+  void update_output(uint16_t measured_voltage, Pwm& pwm);
 };
 
 #endif  // MEASURE_HPP

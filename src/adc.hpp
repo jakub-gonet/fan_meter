@@ -21,7 +21,7 @@ class Adc {
    * @brief Starts single conversion from which result can be aquired later
    * @see get_last_conversion
    */
-  void make_one_async_conversion();
+  void start_one_async_conversion();
 
   /**
    * @brief Get the last conversion result or -1 if none available

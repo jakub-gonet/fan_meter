@@ -1,5 +1,4 @@
 #include <avr/io.h>
-#include <stdint.h>
 
 #include "adc.hpp"
 
@@ -13,6 +12,6 @@ bool Adc::is_conversion_in_progress() {
   return ADCSRA & (1 << ADSC);
 }
 
-void Adc::make_one_async_conversion() {}
+void Adc::start_one_async_conversion() {}
 
 uint16_t Adc::get_last_conversion() {}

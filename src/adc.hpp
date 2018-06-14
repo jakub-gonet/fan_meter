@@ -15,19 +15,19 @@ class Adc {
    * @return true
    * @return false
    */
-  bool is_conversion_in_progress();
+  inline bool is_conversion_in_progress() { return ADCSRA & (1 << ADSC); }
 
   /**
    * @brief Starts single conversion from which result can be aquired later
    * @see get_last_conversion
    */
-  void start_one_async_conversion();
+  inline void start_one_async_conversion() { ADCSRA |= (1 << ADSC); }
 
   /**
    * @brief Get the last conversion result
    *
    * @return uint16_t result from ADC conversion with 8 or 10 bit resolution
    */
-  uint16_t get_last_conversion();
+  inline uint16_t get_last_conversion() { return ADC; }
 };
 #endif

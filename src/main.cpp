@@ -18,9 +18,7 @@ int main() {
     }
 
     uint16_t measured_voltage = adc.get_last_conversion();
-    if (measured_voltage != -1) {
-      measure.update_output(measured_voltage, pwm);
-    }
+    measure.update_output(measured_voltage, pwm);
   }
 
   return 0;

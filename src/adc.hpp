@@ -3,11 +3,21 @@
 
 class Adc {
  public:
+  uint16_t lowest_measured_value;
+  uint8_t highest_measured_value;
+
   /**
    * @brief Construct a new Adc:: Adc object and configures ADC registers
    *
    */
   Adc();
+
+  /**
+   * @brief Updates lowest and highest measured values
+   *
+   * @param current_value
+   */
+  void update_measured_values(uint16_t current_value);
 
   /**
    * @brief Get the last conversion result

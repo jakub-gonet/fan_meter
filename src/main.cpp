@@ -15,7 +15,6 @@ int main() {
   Measure measure(500, 50);
 
   while (true) {
-
     uint16_t measured_voltage = adc.get_last_conversion();
     measure.update_output(measured_voltage, pwm);
   }

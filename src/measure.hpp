@@ -16,15 +16,7 @@ class Measure {
    * @brief Used to prevent PWM from oscilating at exact threshold point
    *
    */
-  uint8_t hysteresis = 50;
-
-  /**
-   * @brief Construct a new Measure object with provided threshold and default
-   * histeresis
-   *
-   * @param threshold
-   */
-  Measure(const uint16_t threshold);
+  uint8_t hysteresis;
 
   /**
    * @brief Construct a new Measure object with provided threshold and

@@ -12,6 +12,10 @@ bool Adc::is_conversion_in_progress() {
   return ADCSRA & (1 << ADSC);
 }
 
-void Adc::start_one_async_conversion() {}
+void Adc::start_one_async_conversion() {
+  ADCSRA |= (1 << ADSC);
+}
 
-uint16_t Adc::get_last_conversion() {}
+uint16_t Adc::get_last_conversion() {
+  return ADC;
+}

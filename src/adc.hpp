@@ -24,7 +24,7 @@ class Adc {
   void start_one_async_conversion();
 
   /**
-   * @brief Get the last conversion result or -1 if none available
+   * @brief Get the last conversion result
    *
    * @return uint16_t result from ADC conversion with 8 or 10 bit resolution
    */

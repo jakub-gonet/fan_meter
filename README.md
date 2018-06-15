@@ -13,7 +13,7 @@ Compiling requires having avr-gcc and avr-objcopy packages installed.
 After having that ready commands are pretty simple:
 
 ```
-avr-gcc -Os -mmcu=atmega8 $(find ./src -type f -name '*.cpp'  ) -o ./bin/program.elf
+avr-gcc -Os -DF_CPU=1000000 -mmcu=atmega8 $(find ./src -type f -name '*.cpp'  ) -o ./bin/program.elf
 
 avr-objcopy -O ihex -j .text -j .data ./bin/program.elf ./bin/program.hex 
 ```

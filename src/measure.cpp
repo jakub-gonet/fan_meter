@@ -2,7 +2,7 @@
 #include <avr/io.h>
 #include "pwm.hpp"
 
-Measure::Measure(uint8_t hysteresis, const Pwm& pwm)
+Measure::Measure(const uint8_t hysteresis, const Pwm& pwm)
     : hysteresis(hysteresis),
       pwm(pwm),
       is_dynamic_mode_enabled(false),

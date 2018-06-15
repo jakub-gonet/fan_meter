@@ -13,7 +13,7 @@ class Measure {
    * @param threshold
    * @param hysteresis
    */
-  Measure(uint8_t hysteresis, const Pwm& pwm);
+  Measure(const uint8_t hysteresis, const Pwm& pwm);
 
   /**
    * @brief Enables or disables dynamic changes of `top`, `bottom` and
@@ -43,6 +43,10 @@ class Measure {
   void update_output(uint16_t measured_voltage);
 
  private:
+ /**
+  * @brief Used to indicate dynamic range mode
+  * 
+  */
   bool is_dynamic_mode_enabled;
 
   /**
@@ -55,7 +59,7 @@ class Measure {
    * @brief Used to prevent PWM from oscilating at exact threshold point
    *
    */
-  uint8_t hysteresis;
+  const uint8_t hysteresis;
 
   /**
    * @brief Used to store maximum ratings of measured voltage

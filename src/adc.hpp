@@ -14,6 +14,6 @@ class Adc {
    *
    * @return uint16_t result from ADC conversion with 8 or 10 bit resolution
    */
-  inline uint16_t get_last_conversion() { return ADC; }
+  uint16_t get_last_conversion() const { return ADC; };
 };
 #endif

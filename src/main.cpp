@@ -10,7 +10,7 @@ int main() {
   Adc adc;
   Pwm pwm;
 
-  Measure measure(500, 50, pwm);
+  Measure measure(50, pwm);
 
   while (true) {
     uint16_t measured_voltage = adc.get_last_conversion();

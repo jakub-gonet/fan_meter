@@ -2,9 +2,8 @@
 #include <avr/io.h>
 #include "pwm.hpp"
 
-Measure::Measure(uint16_t threshold, uint8_t hysteresis, const Pwm& pwm)
-    : threshold(threshold),
-      hysteresis(hysteresis),
+Measure::Measure(uint8_t hysteresis, const Pwm& pwm)
+    : hysteresis(hysteresis),
       pwm(pwm),
       is_dynamic_mode_enabled(false),
       lowest_measured_value(0xFFFF),

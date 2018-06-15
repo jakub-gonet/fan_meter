@@ -7,12 +7,6 @@
 class Measure {
  public:
   /**
-   * @brief Used to mark value between positive and negative PWM
-   *
-   */
-  uint16_t threshold;
-
-  /**
    * @brief Used to prevent PWM from oscilating at exact threshold point
    *
    */
@@ -25,7 +19,7 @@ class Measure {
    * @param threshold
    * @param hysteresis
    */
-  Measure(uint16_t threshold, uint8_t hysteresis, const Pwm& pwm);
+  Measure(uint8_t hysteresis, const Pwm& pwm);
 
   /**
    * @brief Enables or disables dynamic changes of `top`, `bottom` and

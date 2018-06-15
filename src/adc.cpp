@@ -10,3 +10,11 @@ Adc::Adc() {
            (1 << ADFR) |   // free running mode
            (1 << ADSC);    // start first conversion
 }
+
+void Adc::update_measured_values(uint16_t current_value) {
+  if (current_value < this->lowest_measured_value) {
+    this->lowest_measured_value = current_value;
+  } else if (current_value > this->highest_measured_value) {
+    this->highest_measured_value = current_value;
+  }
+}

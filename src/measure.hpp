@@ -7,12 +7,6 @@
 class Measure {
  public:
   /**
-   * @brief Used to prevent PWM from oscilating at exact threshold point
-   *
-   */
-  uint8_t hysteresis;
-
-  /**
    * @brief Construct a new Measure object with provided threshold and
    * histeresis
    *
@@ -56,6 +50,12 @@ class Measure {
    *
    */
   const Pwm& pwm;
+
+  /**
+   * @brief Used to prevent PWM from oscilating at exact threshold point
+   *
+   */
+  uint8_t hysteresis;
 
   /**
    * @brief Used to store maximum ratings of measured voltage

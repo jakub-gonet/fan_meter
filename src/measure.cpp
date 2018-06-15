@@ -2,10 +2,6 @@
 #include <avr/io.h>
 #include "pwm.hpp"
 
-Measure::Measure(uint16_t threshold, uint8_t hysteresis)
-    : threshold(threshold), hysteresis(hysteresis) {}
-
-void Measure::update_output(uint16_t measured_voltage, Pwm& pwm) {
   uint16_t lower_delta = this->threshold - this->hysteresis;
   uint16_t higher_delta = this->threshold + this->hysteresis;
 
@@ -20,6 +16,10 @@ void Measure::update_output(uint16_t measured_voltage, Pwm& pwm) {
   * │   ⇓                 f(x) → ((x - h0) / (h1 - h0)) * h1,  when x in <bottom, l1)
   * ┴ bottom, l0
   */
+Measure::Measure(uint16_t threshold, uint8_t hysteresis, const Pwm& pwm)
+    : threshold(threshold), hysteresis(hysteresis), pwm(pwm) {}
+
+void Measure::update_output(uint16_t measured_voltage) {
   if (measured_voltage <= lower_delta) {
     pwm.set_duty_cycle_on_negative_output_pin(
         (lower_delta - measured_voltage) /

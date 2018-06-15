@@ -7,5 +7,14 @@ Adc::Adc() {
   ADCSRA = (1 << ADEN) |   // ADC enabled
            (1 << ADPS0) |  // prescaler /8 -> 1MHz - 125kHz
            (1 << ADPS1) |  // (50-200kHz for max resolution)
-           (1 << ADFR);    // free running mode
+           (1 << ADFR) |   // free running mode
+           (1 << ADSC);    // start first conversion
+}
+
+void Adc::update_measured_values(uint16_t current_value) {
+  if (current_value < this->lowest_measured_value) {
+    this->lowest_measured_value = current_value;
+  } else if (current_value > this->highest_measured_value) {
+    this->highest_measured_value = current_value;
+  }
 }

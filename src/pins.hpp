@@ -17,7 +17,7 @@ class Pins {
    *
    * @return bool
    */
-  inline bool is_dynamic_range_mode_enabled() const{
+  inline bool is_dynamic_range_mode_enabled() const {
     return ~DYNAMIC_MODE_PIN_REG & (1 << DYNAMIC_MODE_PIN);
   }
 };

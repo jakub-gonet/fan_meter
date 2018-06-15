@@ -47,14 +47,14 @@ void Measure::update_output(const uint16_t measured_voltage) {
   */    
   if (measured_voltage <= lower_delta) {
     pwm.set_duty_cycle_on_negative_output_pin((lower_delta - measured_voltage) /
-                                              (float)lower_delta
+                                              static_cast<float>(lower_delta)
 
                                               * pwm.get_max_pwm_value());
 
   } else if (measured_voltage >= higher_delta) {
     pwm.set_duty_cycle_on_positive_output_pin(
         ((measured_voltage - higher_delta) /
-         (float)(pwm.get_max_pwm_value() - higher_delta))
+         static_cast<float>(pwm.get_max_pwm_value() - higher_delta))
 
         * pwm.get_max_pwm_value());
   }

@@ -20,7 +20,9 @@ Measure::Measure(uint16_t threshold, uint8_t hysteresis, const Pwm& pwm)
     : threshold(threshold),
       hysteresis(hysteresis),
       pwm(pwm),
-      is_dynamic_mode_enabled(false) {}
+      is_dynamic_mode_enabled(false),
+      lowest_measured_value(0xFFFF),
+      highest_measured_value(0) {}
 
 void Measure::update_measured_values(uint16_t current_value) {
   if (is_dynamic_mode_enabled) {

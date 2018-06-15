@@ -21,7 +21,7 @@ void Measure::update_measured_values(uint16_t current_value) {
     top = highest_measured_value;
     bottom = lowest_measured_value;
   } else {
-    top = pwm.pwm_max_value;
+    top = pwm.get_max_pwm_value();
     bottom = 0;
   }
 
@@ -50,12 +50,16 @@ void Measure::update_output(uint16_t measured_voltage) {
   */    
   if (measured_voltage <= lower_delta) {
     pwm.set_duty_cycle_on_negative_output_pin(
-        (1 - ((measured_voltage - bottom) / (float)(lower_delta - bottom))) *
-        pwm.pwm_max_value);
+        (lower_delta - measured_voltage) /
+                      (float)lower_delta 
+        
+        * pwm.get_max_pwm_value());
 
   } else if (measured_voltage >= higher_delta) {
     pwm.set_duty_cycle_on_positive_output_pin(
-        ((measured_voltage - higher_delta) / (float)(top - higher_delta)) *
-        pwm.pwm_max_value);
+        ((measured_voltage - higher_delta) /
+         (float)(pwm.get_max_pwm_value() - higher_delta))
+         
+          * pwm.get_max_pwm_value());
   }
 }

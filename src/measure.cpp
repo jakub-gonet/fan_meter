@@ -9,7 +9,7 @@ Measure::Measure(const uint8_t hysteresis, const Pwm& pwm)
       lowest_measured_value(0xFFFF),
       highest_measured_value(0) {}
 
-void Measure::update_measured_values(uint16_t current_value) {
+void Measure::update_measured_values(const uint16_t current_value) {
   if (is_dynamic_mode_enabled) {
     if (current_value < lowest_measured_value) {
       lowest_measured_value = current_value;
@@ -27,16 +27,14 @@ void Measure::update_measured_values(uint16_t current_value) {
   middle_of_range = (top - bottom) / 2;
 }
 
-void Measure::use_dynamic_range(bool enabled) {
+void Measure::use_dynamic_range(const bool enabled) {
   is_dynamic_mode_enabled = enabled;
 }
-           
-void Measure::update_output(uint16_t measured_voltage) {
-  uint16_t lower_delta = middle_of_range - hysteresis;
-  uint16_t higher_delta = middle_of_range + hysteresis;
 
-
-  /*
+void Measure::update_output(const uint16_t measured_voltage) {
+  const uint16_t lower_delta = middle_of_range - hysteresis;
+  const uint16_t higher_delta = middle_of_range + hysteresis;
+ /*
   * Explanation:
   *    top ┬ h1            Let `x` be position on this drawing, `x in <bottom, top)`
   *        │               Also, let f be function mapping `x` to PWM output.
@@ -48,17 +46,16 @@ void Measure::update_output(uint16_t measured_voltage) {
   * bottom ┴ l0             f(x) → (1 - ((x - bot) / (low - bot))) * (l1 - l0),  when x in <bottom, l1)
   */    
   if (measured_voltage <= lower_delta) {
-    pwm.set_duty_cycle_on_negative_output_pin(
-        (lower_delta - measured_voltage) /
-                      (float)lower_delta 
-        
-        * pwm.get_max_pwm_value());
+    pwm.set_duty_cycle_on_negative_output_pin((lower_delta - measured_voltage) /
+                                              (float)lower_delta
+
+                                              * pwm.get_max_pwm_value());
 
   } else if (measured_voltage >= higher_delta) {
     pwm.set_duty_cycle_on_positive_output_pin(
         ((measured_voltage - higher_delta) /
          (float)(pwm.get_max_pwm_value() - higher_delta))
-         
-          * pwm.get_max_pwm_value());
+
+        * pwm.get_max_pwm_value());
   }
 }

@@ -25,14 +25,14 @@ class Measure {
    * value, 0 and middlepoint between them.
    *
    */
-  void use_dynamic_range(bool enabled);
+  void use_dynamic_range(const bool enabled);
 
   /**
    * @brief Updates lowest and highest measured values
    *
    * @param current_value
    */
-  void update_measured_values(uint16_t current_value);
+  void update_measured_values(const uint16_t current_value);
 
   /**
    * @brief Updates `PWM_POS` and `PWM_NEG` duty cycles based on measured
@@ -40,7 +40,7 @@ class Measure {
    *
    * @param measured_voltage
    */
-  void update_output(uint16_t measured_voltage);
+  void update_output(const uint16_t measured_voltage);
 
  private:
  /**

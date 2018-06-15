@@ -38,6 +38,14 @@ class Measure {
    *
    */
   void use_dynamic_range(bool enabled);
+
+  /**
+   * @brief Updates lowest and highest measured values
+   *
+   * @param current_value
+   */
+  void update_measured_values(uint16_t current_value);
+
   /**
    * @brief Updates `PWM_POS` and `PWM_NEG` duty cycles based on measured
    * voltage
@@ -54,6 +62,19 @@ class Measure {
    *
    */
   const Pwm& pwm;
+
+  /**
+   * @brief Used to store maximum ratings of measured voltage
+   *
+   */
+  uint16_t lowest_measured_value;
+  uint16_t highest_measured_value;
+
+  /**
+   * @brief Used to calculate PWM value
+   *
+   */
+  uint16_t middle_of_range, top, bottom;
 };
 
 #endif  // MEASURE_HPP

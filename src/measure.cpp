@@ -17,7 +17,14 @@
   * ┴ bottom, l0
   */
 Measure::Measure(uint16_t threshold, uint8_t hysteresis, const Pwm& pwm)
-    : threshold(threshold), hysteresis(hysteresis), pwm(pwm) {}
+    : threshold(threshold),
+      hysteresis(hysteresis),
+      pwm(pwm),
+      is_dynamic_mode_enabled(false) {}
+
+void Measure::use_dynamic_range(bool enabled) {
+  is_dynamic_mode_enabled = enabled;
+}
 
 void Measure::update_output(uint16_t measured_voltage) {
   if (measured_voltage <= lower_delta) {

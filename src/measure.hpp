@@ -43,11 +43,11 @@ class Measure {
   void update_output(const uint16_t measured_voltage);
 
  private:
- /**
-  * @brief Used to indicate dynamic range mode
-  * 
-  */
-  bool is_dynamic_mode_enabled;
+  /**
+   * @brief Used to prevent PWM from oscilating at exact threshold point
+   *
+   */
+  const uint8_t hysteresis;
 
   /**
    * @brief Used to get maximum PWM values
@@ -56,10 +56,10 @@ class Measure {
   const Pwm& pwm;
 
   /**
-   * @brief Used to prevent PWM from oscilating at exact threshold point
-   *
+   * @brief Used to indicate dynamic range mode
+   * 
    */
-  const uint8_t hysteresis;
+  bool is_dynamic_mode_enabled;
 
   /**
    * @brief Used to store maximum ratings of measured voltage
